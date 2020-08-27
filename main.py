@@ -4,6 +4,8 @@ import os, sys, json
 from direct.showbase.ShowBase import ShowBase
 from panda3d.core import loadPrcFile
 
+from utils.procgen import *
+
 config_dir = 'config'
 config = os.path.join(config_dir, 'config.prc')
 controls = os.path.join(config_dir, 'controls.json')
@@ -13,8 +15,17 @@ class Game(ShowBase):
     def __init__(self):
         super().__init__()
 
-        self.load_controls(controls)
+        node = cube((1, 2, 3))
 
+        node_path = self.render.attach_new_node(node)
+
+        self.camera.set_pos(8, 8, 8)
+        self.camera.look_at(0, 0, 0)
+
+        # TODO: How do the default camera controls work?
+        self.disable_mouse()
+
+        self.load_controls(controls)
         self.taskMgr.add(self.loop, 'loop')
 
     def load_controls(self, controls: str):
