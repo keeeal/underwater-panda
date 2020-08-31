@@ -12,12 +12,6 @@ from utils.math import *
 
 def mesh(vertices, normals, colours, triangles):
 
-    print(vertices)
-    print()
-    print(normals)
-    # print(colours)
-    # print(triangles)
-
     # TODO: Make this name meaningful in some way
     name = 'test'
 
@@ -82,6 +76,7 @@ def simplex(vertices, colours=[WHITE]):
     normals = 5 * [(0, 0, 1)]
     triangles = list(combinations(range(4), 3))
     return mesh(vertices, normals, colours, triangles)
+
 
 def cube(size, colours=[WHITE]):
     if len(colours) == 1:
